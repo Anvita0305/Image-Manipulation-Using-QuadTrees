@@ -5,6 +5,8 @@
 #include <math.h>
 
 #define RGB_Comp 255
+#define IMG_H 256
+#define IMG_W 256
 
 typedef struct Pixels
 {
@@ -266,7 +268,7 @@ void freeMatrix(unsigned char **img, int size)
 
 void compress(char *ipFile, char *otFile, int factor)
 {
-    int i, size = 0, maxRGB = 0;
+    int i,j, size = 0, maxRGB = 0,maxi,h,w;
     unsigned char **img;
     qtNode *root = NULL, *tmpnode = NULL;
     img = imageRead(ipFile, &size, &maxRGB);
@@ -298,11 +300,23 @@ void compress(char *ipFile, char *otFile, int factor)
         if (v[i].top_left == -1)
             nrColors++;
     }
-    FILE *fptr = fopen(otFile, "wb");
+    FILE *fptr = fopen(otFile, "w");
     if(!fptr)
     {
         printf("Unable to Open the File!\n");
     }
+    h=IMG_H;
+    w=IMG_W;
+    maxi=RGB_Comp;
+    fprintf(fptr,"P6 %d %d %d\n",w,h,maxi);
+    // for ( i = h-1; i >0; i--)
+    // {
+    //     for ( j = 0; j < width; j++)
+    //     {
+    //         fwrite pixels
+    //     }
+        
+    // }
     // printf("%d",nrColors);
     fwrite(&nrColors, sizeof(unsigned int), 1, fptr);
     fwrite(&numOfNodes, sizeof(unsigned int), 1, fptr);
@@ -317,7 +331,8 @@ void compress(char *ipFile, char *otFile, int factor)
 
 int main()
 {
-    int w, h;
+    int w, h,maxi;
+    int i,j;
     if ((imageRead("test0.ppm", NULL, NULL)))
     {
         printf("Image Read Successfully!\n");
@@ -339,13 +354,11 @@ int main()
     // printf("Size of the Image before Compression is %d\n",d.size);
     // printf("Compressed image data:\n");
     FILE *fptr;
-    fptr = fopen("test1_output.ppm", "rb");
-    fscanf(fptr,"%d %d",&h,&w);
-    printf("%d\t",h);
-    printf("%d\t",w);
-    fseek(fptr,0,SEEK_END);
-    printf("Size is %d",ftell(fptr));
-    fseek(fptr,0,SEEK_SET);
+    
+    
+    // fseek(fptr,0,SEEK_END);
+    // printf("Size is %d",ftell(fptr));
+    // fseek(fptr,0,SEEK_SET);
     // unsigned char **c=imageRead("test1_output.ppm", 0,0);
 
     return 0;
