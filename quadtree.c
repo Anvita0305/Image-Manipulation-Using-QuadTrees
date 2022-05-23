@@ -64,8 +64,7 @@ pixels **read(int *height, int *width, char *file)
 	return r;
 }
 
-// compression func
-void compression(pixels **matrix, QuadtreeNode **node, int x, int y, int size, int threshold)
+unsigned long long int mean_of_pixels(pixels **matrix, QuadtreeNode **node, int x, int y, int size)
 {
 	int i, j;
 	unsigned long long int blue = 0, green = 0, red = 0, mean = 0;
@@ -76,13 +75,14 @@ void compression(pixels **matrix, QuadtreeNode **node, int x, int y, int size, i
 	// Compute medium rgb on the current area
 
 	for (i = y; i < y + size; i++)
+	{
 		for (j = x; j < x + size; j++)
 		{
 			blue = blue + matrix[i][j].blue;
 			green = green + matrix[i][j].green;
 			red = red + matrix[i][j].red;
 		}
-
+	}
 	blue = blue / (size * size);
 	red = red / (size * size);
 	green = green / (size * size);
@@ -94,13 +94,21 @@ void compression(pixels **matrix, QuadtreeNode **node, int x, int y, int size, i
 	// Compute score
 
 	for (i = y; i < y + size; i++)
+	{
 		for (j = x; j < x + size; j++)
 		{
 			mean = mean + ((red - matrix[i][j].red) * (red - matrix[i][j].red)) + ((green - matrix[i][j].green) * (green - matrix[i][j].green)) + ((blue - matrix[i][j].blue) * (blue - matrix[i][j].blue));
 		}
-
+	}
 	mean = mean / (3 * size * size);
 
+	return mean;
+}
+
+// compression func
+void compression(pixels **matrix, QuadtreeNode **node, int x, int y, int size, int threshold)
+{
+	unsigned long long int mean = mean_of_pixels(matrix, node, x, y, size);
 	// Traversal condition
 
 	if (mean > threshold)
@@ -145,7 +153,6 @@ void traversal(QuadtreeNode *node, QuadtreeNode **vector[], unsigned int *index)
 
 void copy_to_vector(QuadtreeNode **vp, vQuadtreeNode **v, int index)
 {
-
 	unsigned int i;
 
 	for (i = 0; i < index; i++)
@@ -193,7 +200,7 @@ void write_ppm(pixels **mat, char *file, int size)
 	fclose(f);
 }
 
-//destroy tree
+// destroy tree
 void destroy_tree(QuadtreeNode **node)
 {
 	if ((*node)->top_left != NULL && (*node)->top_left != NULL && (*node)->top_left != NULL && (*node)->top_left != NULL)
@@ -204,11 +211,12 @@ void destroy_tree(QuadtreeNode **node)
 		destroy_tree(&(*node)->bottom_left);
 	}
 	free((*node));
+	return;
 }
 
 int main()
 {
-
+	// printf("hi");
 	unsigned int index = 0;
 	unsigned int i;
 	int width, height, fact;
@@ -264,6 +272,6 @@ int main()
 			count++;
 	}
 	fclose(f);
-	destroy_tree(&node);
+	// destroy_tree(&node);
 	return 0;
 }
