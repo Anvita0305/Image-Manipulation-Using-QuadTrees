@@ -55,3 +55,65 @@ void getMirrorImage(qtNode **node)
 		return;
 	}
 }
+
+//rotate the image to left by 90 deg
+void rotateLeft(qtNode** t)
+{
+	if ((*t)->topLeft != NULL && (*t)->topLeft != NULL && (*t)->topLeft != NULL && (*t)->topLeft != NULL)
+	{
+		qtNode* temp1;
+		qtNode* temp2;
+		qtNode* temp3;
+		qtNode* temp4;
+
+		rotateLeft(&(*t)->topLeft);
+		rotateLeft(&(*t)->topRight);
+		rotateLeft(&(*t)->bottomLeft);
+		rotateLeft(&(*t)->bottomRight);
+
+		temp1=(*t)->topLeft;
+		temp2=(*t)->topRight;
+		temp3=(*t)->bottomLeft;
+		temp4=(*t)->bottomRight;
+
+		(*t)->topLeft=temp2;
+		(*t)->topRight=temp4;
+		(*t)->bottomLeft=temp1;
+		(*t)->bottomRight=temp3;
+	}
+	else
+	{
+		return;
+	}
+}
+
+//rotate the image to right by 90 deg
+void rotateRight(qtNode** t)
+{
+	if ((*t)->topLeft != NULL && (*t)->topLeft != NULL && (*t)->topLeft != NULL && (*t)->topLeft != NULL)
+	{
+		qtNode* temp1;
+		qtNode* temp2;
+		qtNode* temp3;
+		qtNode* temp4;
+
+		rotateRight(&(*t)->topLeft);
+		rotateRight(&(*t)->topRight);
+		rotateRight(&(*t)->bottomLeft);
+		rotateRight(&(*t)->bottomRight);
+
+		temp1=(*t)->topLeft;
+		temp2=(*t)->topRight;
+		temp3=(*t)->bottomLeft;
+		temp4=(*t)->bottomRight;
+
+		(*t)->topLeft=temp3;
+		(*t)->topRight=temp1;
+		(*t)->bottomLeft=temp4;
+		(*t)->bottomRight=temp2;
+	}
+	else
+	{
+		return;
+	}
+}

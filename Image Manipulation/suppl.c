@@ -179,3 +179,28 @@ void readTree(qtInfo *vec, qtNode **node, int i)
         (*node)->bottomRight = NULL;
     }
 }
+
+void destroyTree(qtNode** t)
+{
+    if(!t)
+    {
+        destroyTree(&(*t)->topLeft);
+        destroyTree(&(*t)->topRight);
+        destroyTree(&(*t)->bottomLeft);
+        destroyTree(&(*t)->bottomRight);
+    }
+    free(*t);
+}
+
+//-----------------------------OTHER FUNCS---------------------------------//
+int min(int a,int b)
+{
+    if(a>b)
+    {
+        return a;
+    }
+    else
+    {
+        return b;
+    }
+}

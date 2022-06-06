@@ -53,3 +53,7 @@ int getMean(pixels **matrix, qtNode **node, int x, int y, int size);
 void traversal(qtNode * node, qtNode ** vector[], unsigned int * index);
 void copyToArr(qtNode ** vp, qtInfo ** v, int index);
 void readTree(qtInfo * vec, qtNode ** node, int i);
+void destroyTree(qtNode** t);
+
+//------------------------OTHER FUNCS--------------------------------------//
+int min(int a,int b);

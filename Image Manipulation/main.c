@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include "rotate.h"
+#include "union.h"
 
 int main(int argc, char *argv[])
 {
@@ -86,7 +86,9 @@ int main(int argc, char *argv[])
         // Alloc pixels matrix
         pixels **mat = (pixels **)malloc(sizeof(pixels *) * size);
         for (i = 0; i < size; i++)
+        {
             mat[i] = malloc(sizeof(pixels) * size);
+        }
 
         decompressImage(node, &mat, 0, 0, size);
         outputFile(mat, argv[3], size);
@@ -97,37 +99,109 @@ int main(int argc, char *argv[])
         unsigned int i;
         int factor, width, height;
         pixels **r;
-        qtNode *node = NULL;
+        qtNode *t = NULL;
 
         factor = atoi(argv[3]);
         r = read(&height, &width, argv[4]);
 
-        compressImage(r, &node, 0, 0, width, factor);
+        compressImage(r, &t, 0, 0, width, factor);
 
         if (strcmp(argv[2], "w") == 0)
         {
-            getWaterImage(&node);
+            getWaterImage(&t);
         }
         else if (strcmp(argv[2], "m") == 0)
         {
-            getMirrorImage(&node);
+            getMirrorImage(&t);
+        }
+        else if (strcmp(argv[2], "l90") == 0)
+        {
+            rotateLeft(&t);
+        }
+        else if (strcmp(argv[2], "r90") == 0)
+        {
+            rotateRight(&t);
         }
 
         // Alloc p matrix
         pixels **mat = (pixels **)malloc(sizeof(pixels *) * width);
         for (i = 0; i < width; i++)
+        {
             mat[i] = malloc(sizeof(pixels) * width);
+        }
 
-        decompressImage(node, &mat, 0, 0, width);
+        decompressImage(t, &mat, 0, 0, width);
         outputFile(mat, argv[5], width);
 
         for (i = 0; i < width; i++)
+        {
             free(mat[i]);
+        }
         free(mat);
 
         for (i = 0; i < height; i++)
+        {
             free(r[i]);
+        }
         free(r);
+    }
+    //union of two images
+    else
+    {
+        if (strcmp(argv[1], "-u") == 0)
+        {
+            unsigned int i;
+            int threshold, width, height;
+
+            pixels **r1;
+            pixels **r2;
+
+            qtNode *t1 = NULL;
+            qtNode *t2 = NULL;
+
+            threshold = atoi(argv[2]);
+
+            r1 = read(&height, &width, argv[3]);
+            r2 = read(&height, &width, argv[4]);
+
+            compressImage(r1, &t1, 0, 0, width, threshold);
+            compressImage(r2, &t2, 0, 0, width, threshold);
+
+            qtNode *node_overlay = NULL;
+            unionOfImages(t1, t2, &node_overlay);
+
+            // Alloc rgb matrix
+            pixels **mat = (pixels **)malloc(sizeof(pixels *) * width);
+            for (i = 0; i < width; i++)
+            {
+                mat[i] = malloc(sizeof(pixels) * width);
+            }
+
+            decompressImage(node_overlay, &mat, 0, 0, width);
+            outputFile(mat, argv[5], width);
+
+            // Free
+            destroyTree(&t1);
+            destroyTree(&t2);
+
+            for (i = 0; i < width; i++)
+            {
+                free(mat[i]);
+            }
+            free(mat);
+
+            for (i = 0; i < height; i++)
+            {
+                free(r1[i]);
+            }
+            free(r1);
+
+            for (i = 0; i < height; i++)
+            {
+                free(r2[i]);
+            }
+            free(r2);
+        }
     }
     return 0;
 }
