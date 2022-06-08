@@ -60,29 +60,29 @@ Clone the project
 
 ## Screenshots
 
-# Original Image
+### Original Image
 ![Original](https://user-images.githubusercontent.com/78889572/172678072-6f603b78-60f2-4077-a193-e65c3c39c527.png)
 
-# Mirror Image
+### Mirror Image
 ![mirror](https://user-images.githubusercontent.com/78889572/172678341-768fb128-34bb-4c75-8a56-c993eb0437e9.png)
 
-# Water Image
+### Water Image
 ![water](https://user-images.githubusercontent.com/78889572/172678562-b414d5e3-ce09-4e2b-8c3b-78ab332a07df.png)
 
-# Rotate Left by 90 Degrees
+### Rotate Left by 90 Degrees
 ![Left](https://user-images.githubusercontent.com/78889572/172678940-a5ee9ae8-430e-4b2b-bde2-1a2ebb6cbc9a.png)
 
-# Rotate Right by 90 Degrees
+### Rotate Right by 90 Degrees
 ![Right](https://user-images.githubusercontent.com/78889572/172679017-e6302e00-66ac-4ef7-b030-37bd297c8323.png)
 
-# GrayScale Image
+### GrayScale Image
 ![Gray](https://user-images.githubusercontent.com/78889572/172679616-97dd7dd2-786d-4b60-982e-19098dbd9173.png)
 
-# Negative Image
+### Negative Image
 ![Negative](https://user-images.githubusercontent.com/78889572/172679670-e557ed2b-f7f9-4cd0-8c7d-e598cbad0f46.png)
 
-# Sepia 
-![Sepia](https://user-images.githubusercontent.com/78889572/172679695-f373ad42-c82a-4baf-be93-85393e61ed13.png)
+### Sepia 
+<img src="![Sepia](https://user-images.githubusercontent.com/78889572/172679695-f373ad42-c82a-4baf-be93-85393e61ed13.png)" style="height: 4rem,width: 4rem"></img>
 
 # Union of Images
 
