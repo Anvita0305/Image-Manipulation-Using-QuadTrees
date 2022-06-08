@@ -82,7 +82,7 @@ Clone the project
 ![Negative](https://user-images.githubusercontent.com/78889572/172679670-e557ed2b-f7f9-4cd0-8c7d-e598cbad0f46.png)
 
 ### Sepia 
-<img src="![Sepia](https://user-images.githubusercontent.com/78889572/172679695-f373ad42-c82a-4baf-be93-85393e61ed13.png)" style="height: 4rem,width: 4rem"></img>
+![Sepia](https://user-images.githubusercontent.com/78889572/172679695-f373ad42-c82a-4baf-be93-85393e61ed13.png)
 
 # Union of Images
 
