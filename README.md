@@ -12,7 +12,7 @@ Clone the project
 ```bash
   git clone https://github.com/Anvita0305/Image-Manipulation-Using-QuadTrees
 ```
-
+##Build
 ```bash
   make final
 ```
@@ -61,7 +61,7 @@ Clone the project
 ## Screenshots
 
 ### Original Image
-![Original](https://user-images.githubusercontent.com/78889572/172678072-6f603b78-60f2-4077-a193-e65c3c39c527.png)
+<img src=""C:\Users\anvit\Desktop\Original.png"" height="60" width="60" >
 
 ### Mirror Image
 ![mirror](https://user-images.githubusercontent.com/78889572/172678341-768fb128-34bb-4c75-8a56-c993eb0437e9.png)
