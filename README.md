@@ -12,7 +12,7 @@ Clone the project
 ```bash
   git clone https://github.com/Anvita0305/Image-Manipulation-Using-QuadTrees
 ```
-##Build
+## Build
 ```bash
   make final
 ```
