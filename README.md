@@ -61,7 +61,7 @@ Clone the project
 ## Screenshots
 
 ### Original Image
-<img src=""C:\Users\anvit\Desktop\Original.png"" height="60" width="60" >
+<img src="C:\Users\anvit\Desktop\Original.png" style="height=10rem;width=10rem" >
 
 ### Mirror Image
 ![mirror](https://user-images.githubusercontent.com/78889572/172678341-768fb128-34bb-4c75-8a56-c993eb0437e9.png)
