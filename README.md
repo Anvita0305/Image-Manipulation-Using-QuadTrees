@@ -61,7 +61,7 @@ Clone the project
 ## Screenshots
 
 ### Original Image
-<img src="C:\Users\anvit\Desktop\Original.png" style="height=10rem;width=10rem" >
+![Original](https://user-images.githubusercontent.com/78889572/173231286-5e2e311a-45b6-4998-87bf-9e7cdc7afd0a.png)
 
 ### Mirror Image
 ![mirror](https://user-images.githubusercontent.com/78889572/172678341-768fb128-34bb-4c75-8a56-c993eb0437e9.png)
@@ -84,7 +84,8 @@ Clone the project
 ### Sepia 
 ![Sepia](https://user-images.githubusercontent.com/78889572/172679695-f373ad42-c82a-4baf-be93-85393e61ed13.png)
 
-# Union of Images
+### Union of Images
+![union](https://user-images.githubusercontent.com/78889572/173231336-05587d19-2392-4707-a7e3-6e53f3e85879.png)
 
 
 ## Author
